@@ -1,0 +1,19 @@
+{
+  "name": "dedup-leads",
+  "version": "1.0.0",
+  "description": "Deduplicates entries in a given leads.json file based on specs provided by Marketo.",
+  "main": "dedup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rylab/dedup-test.git"
+  },
+  "author": "Ryan D LaBarre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rylab/dedup-test/issues"
+  },
+  "homepage": "https://github.com/Rylab/dedup-test"
+}
