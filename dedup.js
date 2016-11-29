@@ -18,6 +18,7 @@ fs.readFile(file, 'utf8', function (err, filedata) {
   // Loop through all leads, adding them to the clean array after checking whether there is a duplicate in the growing clean output.
   // Replace that previously recorded entry with this newer one, unless the existing record had a newer entryDate.
   filedata.leads.map(function (lead) {
+    var cleanLead = true;
     for (var i = 0; i < clean.leads.length; i++) {
       if (lead._id === clean.leads[i]._id || lead.email === clean.leads[i].email) {
         var firstDate = new Date(clean.leads[i].entryDate);
@@ -29,11 +30,17 @@ fs.readFile(file, 'utf8', function (err, filedata) {
             console.dir(lead);
             clean.leads.splice(i, 1);
         }
+        else {
+          cleanLead = false;
+        }
         break;
       }
     }
-    // no dup found (yet); push this element into the clean array
-    clean.leads.push(lead);
+
+    if (cleanLead) {
+      // no dup found (yet); push this element into the clean array
+      clean.leads.push(lead);
+    }
   });
 
   fs.writeFileSync(__dirname + '/leads-clean.json', JSON.stringify(clean, null, ' '));
