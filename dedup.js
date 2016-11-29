@@ -29,12 +29,10 @@ fs.readFile(file, 'utf8', function (err, filedata) {
             console.dir(lead);
             clean.leads.splice(i, 1);
         }
-        else {
-            continue; // do not push this older duplicate into the clean output
-        }
+        break;
       }
     }
-    // no dup found
+    // no dup found (yet); push this element into the clean array
     clean.leads.push(lead);
   });
 
